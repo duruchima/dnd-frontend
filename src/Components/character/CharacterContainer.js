@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CharacterCard from "./CharacterCard"
 import CharacterView from "./CharacterView";
 import CharacterCreateForm from "./CharacterCreateForm";
+import Test from "./Test";
 
 class CharacterContainer extends Component {
     state = {
@@ -21,10 +22,12 @@ class CharacterContainer extends Component {
             <>
             <button onClick={this.handleFormClick}>New Character</button>
             {this.state.showForm ? <CharacterCreateForm /> :
-                this.state.isClicked ? <CharacterView /> : 
-                <CharacterCard click={this.handleClick}/>
+                this.state.isClicked ? <CharacterView image={"https://i.ytimg.com/vi/2Fw3MMcTA4E/maxresdefault.jpg"} name={"Awesome Paladin"} class={"Paladin"} race={"Human"} bio={"lorem ipsum ad nauseum"} /> : 
+                <CharacterCard image={"https://i.ytimg.com/vi/2Fw3MMcTA4E/maxresdefault.jpg"}
+                name={"Awesome Paladin"}  click={this.handleClick}/>
             }
             </>
+            // <Test/>
         )
 
     }

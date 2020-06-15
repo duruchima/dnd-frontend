@@ -4,8 +4,8 @@ class CharacterCard extends Component {
     render() {
         return (
                 <div onClick={this.props.click}>
-                    <h1>character Pic?</h1>
-                    <h2>character name</h2>
+                    <img width={250} height={150} src={this.props.image} alt="charImage"></img>
+                    <h2>{this.props.name}</h2>
                 </div>
         )
 
