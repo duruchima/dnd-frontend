@@ -1,8 +1,35 @@
 import React, { Component } from "react";
+let SKILLSAPI = 'http://localhost:3000/skills'
+let SKILLCHARJOIN = 'http://localhost:3000/skill_character_joins'
 
 class CharacterView extends Component {
-
+    state = {
+        showEditForm: false,
+        skills: [],
+        skillCharJoin: [],
+        filteredSkills: []
+    }
+    handleEditButton = () => {
+        this.setState({showEditForm: !this.state.showEditForm})
+    }
+    filterSkills = () => {
+        let filteredSkills = []
+        let joins = this.state.skillCharJoin.filter(skillJoin => skillJoin.character_id === this.props.character.id)
+        filteredSkills = joins.map(charSkill => this.state.skills.find(skill => skill.id === charSkill.skill_id))
+        this.setState({filteredSkills: filteredSkills})
+        console.log(filteredSkills, "filter")
+    }
+    componentDidMount() {
+        fetch(SKILLSAPI)
+            .then(resp => resp.json())
+            .then(skills => this.setState({ skills: skills }))
+        fetch(SKILLCHARJOIN)
+            .then(resp => resp.json())
+            .then(skillCharJoin => this.setState({ skillCharJoin: skillCharJoin }))
+            .then(res => this.filterSkills())
+    }
     render() {
+        
         return (
             <div>
                 <img width={300} height={150} src={this.props.image} alt="charImage"></img>
@@ -26,10 +53,16 @@ class CharacterView extends Component {
                 <br></br>
                 <text><b>Hitpoints:</b> {this.props.character.hitpoints}</text>
                 <br></br>
+                <h4>Skills:</h4>
+                {this.state.filteredSkills.map(skill => 
+                    <><text><b>{skill.name}</b></text>
+                    <br></br>
+                    <text>{skill.description}</text><br></br> </>)}
+                <br></br>
                 <h4>Bio:</h4>
                 <text>{this.props.character.bio}</text>
                 <br></br>
-                <button>Edit Character</button>
+                <button onClick={this.handleEditButton}>Edit Character</button>
             </div>
         )
 

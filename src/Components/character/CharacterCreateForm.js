@@ -1,5 +1,5 @@
 import React from 'react';
-import CharacterView from './CharacterView';
+import Select from '@material-ui/core/Select'
 let SKILLAPI = 'http://localhost:3000/skills'
 let CLASSAPI = 'http://localhost:3000/char_classes'
 let RACEAPI = 'http://localhost:3000/races'
@@ -69,11 +69,11 @@ class CharacterCreateForm extends React.Component {
             })
         })//closes character post
         .then(response => response.json())
-        .then(charObj => {this.setState({currentCharObj: charObj})})
-        .then(data => {this.postCharSkillsJoin()})
-        .then(res => this.setState({charCreated: !this.state.charCreated}))
-        this.props.addNewChar(this.state.currentCharObj)
-        this.props.hideForm()
+        .then(charObj => {this.setState({currentCharObj: charObj}, this.postCharSkillsJoin)})
+        // .then(data => {this.postCharSkillsJoin()})
+        
+        
+        // this.props.hideForm()
 
         // fetch(CLASSCHARACTERJOIN, {
         //     method: "POST",
@@ -114,7 +114,15 @@ class CharacterCreateForm extends React.Component {
                     skill_id: skill.id
                 })
             }))
+        
+            this.addCharToState()
     }
+
+    addCharToState = () => {
+        this.props.addNewChar(this.state.currentCharObj)
+        this.props.fetchCharacters()
+    }
+
     handleRace = () => {
         let race = this.state.races.find( race => race.name === this.state.race)
         this.setState({currentRaceObj: race})
