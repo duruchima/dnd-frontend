@@ -16,7 +16,8 @@ class CharacterContainer extends Component {
         currentRace: [],
         classes: [],
         currentClass: [],
-        charCreated: false
+        charCreated: false,
+        successfullyDeleted: []
     }
     handleClick = (id) => {
         this.setState({ isClicked: !this.state.isClicked });
@@ -41,18 +42,47 @@ class CharacterContainer extends Component {
             .then(resp => resp.json())
             .then(classes => this.setState({ classes: classes }))
     }
-    characterCreated = (id) => {
-
+    hideForm = () => {
+        this.setState({showForm: !this.state.showForm})
+    }
+    handleDelete = (id) => {
+        // fetch(CHARACTERAPI + "/" + id, {
+        //     method: "DELETE"
+        // })
+        this.props.reRender()
+        fetch(CHARACTERAPI + `/${id}`, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json",
+                accept: "application/json",
+            },
+            body: JSON.stringify(id),
+        })
+    }
+    addNewChar = (charObj) => {
+        console.log(charObj)
+        let charArr = this.state.characters
+        charArr.push(charObj)
+        this.setState({characters: charArr})
+        // fetch(CHARACTERAPI)
+        //     .then(resp => resp.json())
+        //     .then(characters => this.setState({ characters: characters }))
+    }
+    reRender = () => {
+        console.log('test')
+        console.log(this.state.successfullyDeleted)
+        let i = this.state.successfullyDeleted
+        i++
+        this.setState({ successfullyDeleted: i })
     }
     render() {
-        console.log(this.state.classes)
         return (
             <>
                 <button onClick={this.handleFormClick}>New Character</button>
-                {this.state.showForm ? <CharacterCreateForm /> :
+                {this.state.showForm ? <CharacterCreateForm addNewChar={this.addNewChar} hideForm={this.hideForm} /> :
                     this.state.isClicked ? <CharacterView character={this.state.currentCharacter} race={this.state.currentRace} cla={this.state.currentClass} />
-                        : this.state.characters.map((character) => <CharacterCard image={"https://i.ytimg.com/vi/2Fw3MMcTA4E/maxresdefault.jpg"}
-                            name={character.name} click={() => { this.handleClick(character.id) }} />)
+                        : this.state.characters.map((character) => <CharacterCard handleDelete={this.handleDelete} image={"https://i.ytimg.com/vi/2Fw3MMcTA4E/maxresdefault.jpg"}
+                            character={character} click={() => { this.handleClick(character.id) }} />)
                 }
             </>
         )

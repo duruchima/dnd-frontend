@@ -1,9 +1,9 @@
 import React from 'react';
+import CharacterView from './CharacterView';
 let SKILLAPI = 'http://localhost:3000/skills'
 let CLASSAPI = 'http://localhost:3000/char_classes'
 let RACEAPI = 'http://localhost:3000/races'
 let CHARACTERAPI = 'http://localhost:3000/characters'
-let CLASSCHARACTERJOIN = 'http://localhost:3000/class_chars'
 let SKILLCHARS = 'http://localhost:3000/skill_character_joins'
 class CharacterCreateForm extends React.Component {
     state = {
@@ -71,6 +71,9 @@ class CharacterCreateForm extends React.Component {
         .then(response => response.json())
         .then(charObj => {this.setState({currentCharObj: charObj})})
         .then(data => {this.postCharSkillsJoin()})
+        .then(res => this.setState({charCreated: !this.state.charCreated}))
+        this.props.addNewChar(this.state.currentCharObj)
+        this.props.hideForm()
 
         // fetch(CLASSCHARACTERJOIN, {
         //     method: "POST",
@@ -96,7 +99,7 @@ class CharacterCreateForm extends React.Component {
         //         })
         //     }))
         // this.postCharClassJoin()
-        this.postCharSkillsJoin()
+        
     }//closes handleSubmit
     postCharSkillsJoin = () => {
         this.state.currentSkillObjs.map(skill => 
