@@ -3,9 +3,6 @@ import CharacterContainer from "../character/CharacterContainer";
 
 class HomeContainer extends Component {
 
-    componentDidMount(){
-        
-    }
     render() {
         return (
             <CharacterContainer/>
