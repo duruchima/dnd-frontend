@@ -1,71 +1,89 @@
 import React, { Component } from "react";
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
+import EditCharacterForm from "./EditCharacterForm";
 let SKILLSAPI = 'http://localhost:3000/skills'
 let SKILLCHARJOIN = 'http://localhost:3000/skill_character_joins'
 
 class CharacterView extends Component {
     state = {
         showEditForm: false,
-        skills: [],
         skillCharJoin: [],
-        filteredSkills: []
+        filteredSkills: [],
+        character: []
     }
     handleEditButton = () => {
-        this.setState({showEditForm: !this.state.showEditForm})
+        this.setState({ showEditForm: !this.state.showEditForm })
     }
     filterSkills = () => {
         let filteredSkills = []
         let joins = this.state.skillCharJoin.filter(skillJoin => skillJoin.character_id === this.props.character.id)
-        filteredSkills = joins.map(charSkill => this.state.skills.find(skill => skill.id === charSkill.skill_id))
-        this.setState({filteredSkills: filteredSkills})
-        console.log(filteredSkills, "filter")
+        filteredSkills = joins.map(charSkill => this.props.skills.find(skill => skill.id === charSkill.skill_id))
+        this.setState({ filteredSkills: filteredSkills })
     }
     componentDidMount() {
-        fetch(SKILLSAPI)
-            .then(resp => resp.json())
-            .then(skills => this.setState({ skills: skills }))
         fetch(SKILLCHARJOIN)
             .then(resp => resp.json())
             .then(skillCharJoin => this.setState({ skillCharJoin: skillCharJoin }))
             .then(res => this.filterSkills())
+            // this.setState({character: this.props.character})
     }
+    // hideEditForm = () => {
+    //     this.setState({showEditForm: false})
+    // }
+    updateCurrentChar = (newChar) => {}
     render() {
-        
-        return (
-            <div>
-                <img width={300} height={150} src={this.props.image} alt="charImage"></img>
-                <h2>{this.props.character.name}</h2>
-                <h3>{this.props.race.name}</h3>
-                <h3>{this.props.cla.name}</h3>
-                <h3>Stats:</h3>
-                <text><b>Level:</b>{this.props.character.level}</text>
-                <br></br>
-                <text><b>Strength:</b> {this.props.character.strength}</text>
-                <br></br>
-                <text><b>Dexterity:</b> {this.props.character.dexterity}</text>
-                <br></br>
-                <text><b>Constitution:</b> {this.props.character.constitution}</text>
-                <br></br>
-                <text><b>Intelligence:</b> {this.props.character.intelligence}</text>
-                <br></br>
-                <text><b>Wisdom:</b> {this.props.character.wisdom}</text>
-                <br></br>
-                <text><b>Charisma:</b> {this.props.character.charisma}</text>
-                <br></br>
-                <text><b>Hitpoints:</b> {this.props.character.hitpoints}</text>
-                <br></br>
-                <h4>Skills:</h4>
-                {this.state.filteredSkills.map(skill => 
-                    <><text><b>{skill.name}</b></text>
-                    <br></br>
-                    <text>{skill.description}</text><br></br> </>)}
-                <br></br>
-                <h4>Bio:</h4>
-                <text>{this.props.character.bio}</text>
-                <br></br>
-                <button onClick={this.handleEditButton}>Edit Character</button>
-            </div>
-        )
 
-    }
-}
+        return (
+            <>
+            {this.state.showEditForm ? <EditCharacterForm hideEditForm={this.hideEditForm} updateChar={this.props.updateChar}race={this.props.race} cla={this.props.cla} character={this.props.character}/> :
+                <>
+                <Card onClick={this.props.click} >
+                    <meta
+                        name="viewport"
+                        content="minimum-scale=1, initial-scale=1, width=device-width"
+                    />
+                    <CardContent style={{
+                        position: 'absolute',
+                        left: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)'
+                    }}>
+                        <img width={200} height={200} src={this.props.character.img_url} alt="charImage"></img>
+                        <Typography fonstSize={14} gutterBottom>
+                            <Box color="primary.main"><b>{this.props.character.name}</b></Box>
+                            <Box color="secondary.main">{this.props.race.name}</Box>
+                            <Box color="success.main">{this.props.cla.name}</Box>
+                            <Box color="info.main"><b>Stats:</b></Box>
+                            <Box><b>Level:</b>{this.props.character.level}</Box>
+                            <Box><b>Strength:</b> {this.props.character.strength}</Box>
+                            <Box><b>Dexterity:</b> {this.props.character.dexterity}</Box>
+                            <Box><b>Constitution:</b> {this.props.character.constitution}</Box>
+                            <Box><b>Intelligence:</b> {this.props.character.intelligence}</Box>
+                            <Box><b>Wisdom:</b> {this.props.character.wisdom}</Box>
+                            <Box><b>Charisma:</b> {this.props.character.charisma}</Box>
+                            <Box><b>Hitpoints:</b> {this.props.character.hitpoints}</Box>
+                            <Box><b>Skills:</b></Box>
+                            {this.state.filteredSkills.map(skill =>
+                                <><Box><b>{skill.name}</b></Box>
+                                    <text>{skill.description}</text> </>)}
+                            <Box><b>Alignment:</b></Box>
+                            <text>{this.props.race.alignment}</text>
+                            <Box><b>Backstory:</b></Box>
+                            <text>{this.props.character.bio}</text>
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <Button variant="contained" color="secondary" onClick={this.handleEditButton}>Edit Character</Button></>}
+                </>
+        )//closes return
+    }//closes render
+}//closes component
 export default CharacterView
+
+// style={{ marginLeft: "1000px", marginTop: "500px" }
