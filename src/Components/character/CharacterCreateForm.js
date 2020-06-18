@@ -195,7 +195,7 @@ class CharacterCreateForm extends React.Component {
                     <TextField variant="outlined" onChange={this.handleChange} name={"charName"} value={this.state.charName} placeholder="Enter Character Name" />
                     <br></br>
                     <h3>Character Image Url</h3>
-                    <TextField variant="outlined" onChange={this.handleChange} name={"charImg"} value={this.state.charImg} placeholder="Character Image URL" />
+                    <TextField variant="outlined" onChange={this.handleChange} name={"charImg"} value={this.state.charImg} placeholder="If blank default will be used based on character race" />
                     <br></br>
                     <h3>Select Race:</h3>
                     <Select value={this.state.value} name={"race"} onChange={this.handleChange}>
@@ -696,7 +696,7 @@ class CharacterCreateForm extends React.Component {
                     </> : null}
                     <br></br>
                     <h3>Character Backstory</h3>
-                    <TextField onClick={this.handleSkillState} id="character-backstory" name="charBio" label="Please write a descriptive backstory for your character" multiline rowsMax={5} value={this.state.charBio} onChange={this.handleChange} variant="outlined" />
+                    <TextField onClick={this.handleSkillState} id="character-backstory" name="charBio" label="Please write a descriptive backstory." multiline rowsMax={5} value={this.state.charBio} onChange={this.handleChange} variant="outlined" />
                     <br></br>
                     <br></br>
                     <Button variant="contained" color="primary" disabled={!submitEnabled} onClick={this.handleSubmit}>Create Character</Button>

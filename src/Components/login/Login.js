@@ -47,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+function handleClick() {
+    console.log("click event worked")
+}
+
 export default function LogIn(props) {
     const classes = useStyles();
 
@@ -106,9 +110,9 @@ export default function LogIn(props) {
                             </Link> */}
                         </Grid>
                         <Grid item>
-                            {/* <Link href="#" variant="body2">
+                            <Link onClick={handleClick}href="#" variant="body2">
                                 {"Don't have an account? Sign Up"}
-                            </Link> */}
+                            </Link>
                         </Grid>
                     </Grid>
                 </form>

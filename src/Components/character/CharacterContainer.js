@@ -126,13 +126,15 @@ class CharacterContainer extends Component {
         this.setState({currentUser: "", loginClicked: false})
     }
     render() {
+        console.log(this.state.currentUser)
         return (
             <>
                 <meta
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width"
                 />
-                {this.state.loginClicked ?
+                {!this.state.loginClicked ? <LogIn handleChange={this.handleLoginChange} handleSubmit={this.onSubmitClick} />
+                :
                     <>
                         {this.state.isClicked || this.state.showForm ? <Button variant="contained" color="primary" onClick={this.goHome}>Home Page</Button> : <><Button variant="contained" color="primary" onClick={this.handleFormClick}>New Character</Button> <Button onClick={this.handleLogOut} style={{ marginLeft: "1500px" }} variant="contained" color="primary">Log Out</Button> </>}
                         {this.state.showForm ?
@@ -142,8 +144,9 @@ class CharacterContainer extends Component {
                                 : <Grid container spacing={5}> {this.state.characters.map((character) => <Grid item xs={6} x={6} lg={3} xl={3}>
                                     <CharacterCard key={character.id} handleDelete={this.handleDelete} image={character.img_url}
                                         character={character} click={() => { this.handleClick(character.id) }} /> </Grid>)} </Grid>
-                        }</> :
-                    <LogIn handleChange={this.handleLoginChange} handleSubmit={this.onSubmitClick} />
+                        }</> 
+                    
+                        
                 }
             </>
         )

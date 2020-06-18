@@ -61,12 +61,12 @@ class CharacterView extends Component {
                             <Box color="success.main">{this.props.cla.name}</Box>
                             <Box color="info.main"><b>Stats:</b></Box>
                             <Box><b>Level:</b>{this.props.character.level}</Box>
-                            <Box><b>Strength:</b> {this.props.character.strength}</Box>
-                            <Box><b>Dexterity:</b> {this.props.character.dexterity}</Box>
-                            <Box><b>Constitution:</b> {this.props.character.constitution}</Box>
-                            <Box><b>Intelligence:</b> {this.props.character.intelligence}</Box>
-                            <Box><b>Wisdom:</b> {this.props.character.wisdom}</Box>
-                            <Box><b>Charisma:</b> {this.props.character.charisma}</Box>
+                            <Box><b>Strength:</b> {this.props.character.strength} <b>Modifier:</b> +{Math.floor((this.props.character.strength - 10)/2)}</Box>
+                            <Box><b>Dexterity:</b> {this.props.character.dexterity} <b>Modifier:</b> +{Math.floor((this.props.character.dexterity - 10)/2)}</Box>
+                            <Box><b>Constitution:</b> {this.props.character.constitution} <b>Modifier:</b> +{Math.floor((this.props.character.constitution - 10)/2)}</Box>
+                            <Box><b>Intelligence:</b> {this.props.character.intelligence} <b>Modifier:</b> +{Math.floor((this.props.character.intelligence - 10)/2)}</Box>
+                            <Box><b>Wisdom:</b> {this.props.character.wisdom} <b>Modifier:</b> +{Math.floor((this.props.character.wisdom - 10)/2)}</Box>
+                            <Box><b>Charisma:</b> {this.props.character.charisma} <b>Modifier:</b> +{Math.floor((this.props.character.charisma - 10)/2)}</Box>
                             <Box><b>Hitpoints:</b> {this.props.character.hitpoints}</Box>
                             <Box><b>Skills:</b></Box>
                             {this.state.filteredSkills.map(skill =>
