@@ -36,7 +36,6 @@ class CharacterCreateForm extends React.Component {
     }
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
-
     }
     componentDidMount() {
         fetch(SKILLAPI)
@@ -213,7 +212,7 @@ class CharacterCreateForm extends React.Component {
                         ))}
                     </Select>
                     <br></br>
-                    <h3>Skills:</h3>
+                        <h3>Select {this.state.currentClassObj.num_of_proficiency_choices} Skills:</h3>
                     {this.state.class === "Barbarian" ? 
                     <> 
                     <FormControl>

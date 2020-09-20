@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
 import EditCharacterForm from "./EditCharacterForm";
-let SKILLSAPI = 'http://localhost:3000/skills'
 let SKILLCHARJOIN = 'http://localhost:3000/skill_character_joins'
 
 class CharacterView extends Component {
@@ -33,9 +29,7 @@ class CharacterView extends Component {
             .then(res => this.filterSkills())
             // this.setState({character: this.props.character})
     }
-    // hideEditForm = () => {
-    //     this.setState({showEditForm: false})
-    // }
+
     updateCurrentChar = (newChar) => {}
     render() {
 
@@ -85,5 +79,3 @@ class CharacterView extends Component {
     }//closes render
 }//closes component
 export default CharacterView
-
-// style={{ marginLeft: "1000px", marginTop: "500px" }

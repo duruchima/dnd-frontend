@@ -105,13 +105,13 @@ export default function LogIn(props) {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            {/* <Link href="#" variant="body2">
+                            <Link href="#" variant="body2">
                                 Forgot password?
-                            </Link> */}
+                            </Link>
                         </Grid>
                         <Grid item>
-                            <Link onClick={handleClick}href="#" variant="body2">
-                                {"Don't have an account? Sign Up"}
+                            <Link onClick={props.onClick}href="#" variant="body2">
+                                "Don't have an account? Sign Up"
                             </Link>
                         </Grid>
                     </Grid>

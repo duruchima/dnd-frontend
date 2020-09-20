@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import CharacterCreateFormDupe from "./CharacterCreateFormDupe"
 import Card from '@material-ui/core/Card';
 import LogIn from '../login/Login.js'
+import SignUp from "../login/SignUp";
 let CHARACTERAPI = 'http://localhost:3000/characters'
 let RACEAPI = 'http://localhost:3000/races'
 let CLASSESAPI = 'http://localhost:3000/char_classes'
@@ -32,7 +33,11 @@ class CharacterContainer extends Component {
         username: "",
         password: "",
         currentUser: "",
-        users: []
+        users: [],
+        signUpClicked: false,
+        email: "",
+        firstname: "",
+        lastname: ""
     }
     handleClick = (id) => {
         this.setState({ isClicked: !this.state.isClicked });
@@ -125,27 +130,39 @@ class CharacterContainer extends Component {
     handleLogOut = () => {
         this.setState({currentUser: "", loginClicked: false})
     }
+    handleSignUp = () => {
+        this.setState({signUpClicked: true})
+    }
+    goBackToLogIn = () => {
+        this.setState({signUpClicked: false})
+    }
+    handleSignUpChange = (e) => {
+        e.preventDefault();
+        this.setState({[e.target.name]: e.target.value})
+    }
+    onSignUpSubmit = (e) => {
+        e.preventDefault();
+
+    }
     render() {
-        console.log(this.state.currentUser)
         return (
             <>
                 <meta
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width"
                 />
-                {!this.state.loginClicked ? <LogIn handleChange={this.handleLoginChange} handleSubmit={this.onSubmitClick} />
-                :
+                {this.state.loginClicked ? 
                     <>
-                        {this.state.isClicked || this.state.showForm ? <Button variant="contained" color="primary" onClick={this.goHome}>Home Page</Button> : <><Button variant="contained" color="primary" onClick={this.handleFormClick}>New Character</Button> <Button onClick={this.handleLogOut} style={{ marginLeft: "1500px" }} variant="contained" color="primary">Log Out</Button> </>}
+                        {this.state.isClicked || this.state.showForm ? <Button variant="contained" color="primary" onClick={this.goHome}>Home Page</Button> : <><Button variant="contained" color="primary" onClick={this.handleFormClick}>New Character</Button> <Button onClick={this.handleLogOut} style={{ marginLeft: "1529px" }} variant="contained" color="primary">Log Out</Button> </>}
                         {this.state.showForm ?
                             <CharacterCreateForm addNewChar={this.addNewChar} fetchCharacters={this.fetchCharacters} hideForm={this.hideForm} />
                             : this.state.isClicked ?
-                                <CharacterView updateChar={this.updateChar} character={this.state.currentCharacter} skills={this.state.skills} race={this.state.currentRace} cla={this.state.currentClass} joins={this.state.skillCharJoin} image={"https://i.ytimg.com/vi/2Fw3MMcTA4E/maxresdefault.jpg"} />
+                                <CharacterView updateChar={this.updateChar} character={this.state.currentCharacter} skills={this.state.skills} race={this.state.currentRace} cla={this.state.currentClass} joins={this.state.skillCharJoin} />
                                 : <Grid container spacing={5}> {this.state.characters.map((character) => <Grid item xs={6} x={6} lg={3} xl={3}>
                                     <CharacterCard key={character.id} handleDelete={this.handleDelete} image={character.img_url}
                                         character={character} click={() => { this.handleClick(character.id) }} /> </Grid>)} </Grid>
-                        }</> 
-                    
+                        }</> : this.state.signUpClicked ? <SignUp backToLogin={this.goBackToLogIn} /> :
+                    <LogIn handleChange={this.handleLoginChange} onClick={this.handleSignUp} handleSubmit={this.onSubmitClick} />
                         
                 }
             </>
