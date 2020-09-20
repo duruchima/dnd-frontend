@@ -178,7 +178,6 @@ class CharacterCreateForm extends React.Component {
                 marginTop: theme.spacing(3),
             },
         }));
-        // const classes = useStyles();
         console.log(this.state.charImg.length, "charImg")
         return (
             <FormControl style={{
