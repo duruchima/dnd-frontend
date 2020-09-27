@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Alert } from 'react-alert'
 let SKILLAPI = 'http://localhost:3000/skills'
 let CLASSAPI = 'http://localhost:3000/char_classes'
 let RACEAPI = 'http://localhost:3000/races'
