@@ -3,15 +3,11 @@ import CharacterContainer from "../character/CharacterContainer";
 
 class HomeContainer extends Component {
     render() {
-        
         return (
             <div >
-            <CharacterContainer />
+            <CharacterContainer /> 
             </div>
-        )
-    
-    }
-
-
+        )//closed return
+    }//closed render
 }
 export default HomeContainer
