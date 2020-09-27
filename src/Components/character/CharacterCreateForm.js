@@ -40,13 +40,13 @@ class CharacterCreateForm extends React.Component {
     componentDidMount() {
         fetch(SKILLAPI)
             .then(resp => resp.json())
-            .then((skills) => this.setState({ skills: skills }, function () { console.log(this.state.skills[0].description) }))
+            .then((skills) => this.setState({ skills: skills }))
         fetch(CLASSAPI)
             .then(resp => resp.json())
-            .then((classes) => this.setState({ classes: classes }, function () { console.log(this.state.classes[0]) }))
+            .then((classes) => this.setState({ classes: classes }))
         fetch(RACEAPI)
             .then(resp => resp.json())
-            .then((races) => this.setState({ races: races }, function () { console.log(this.state.races[0]) }))
+            .then((races) => this.setState({ races: races }))
     }
     handleSkills = (event) => {
         let clas = this.state.classes.find(cla => cla.name === this.state.class)
@@ -108,7 +108,6 @@ class CharacterCreateForm extends React.Component {
         this.setState({ currentClassObj: cla })
     }
     setImg = () => {
-        console.log("setImg")
         let dragonborn = "https://i.pinimg.com/736x/f6/83/4d/f6834d8434218cc8f855bf5f37c13850.jpg"
         let dwarf = "https://i.pinimg.com/originals/09/ec/5b/09ec5b8a2cbed5197a85508183cc3ab8.png"
         let elf = "https://i.pinimg.com/originals/fe/79/61/fe7961f79f9d8fe039b2b8803cf63791.jpg"
@@ -178,7 +177,6 @@ class CharacterCreateForm extends React.Component {
                 marginTop: theme.spacing(3),
             },
         }));
-        console.log(this.state.charImg.length, "charImg")
         return (
             <FormControl style={{
                 position: 'absolute', 
