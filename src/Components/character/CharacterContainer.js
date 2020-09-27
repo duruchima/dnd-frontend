@@ -4,9 +4,6 @@ import CharacterView from "./CharacterView";
 import CharacterCreateForm from "./CharacterCreateForm";
 import Button from '@material-ui/core/Button'
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import CharacterCreateFormDupe from "./CharacterCreateFormDupe"
-import Card from '@material-ui/core/Card';
 import LogIn from '../login/Login.js'
 import SignUp from "../login/SignUp";
 let CHARACTERAPI = 'http://localhost:3000/characters'
