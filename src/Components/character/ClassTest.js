@@ -18,7 +18,6 @@ class ClassTest extends React.Component {
         newRace: []
     }
     handleChange = (event) => {
-        // console.log(event.target.options)
         this.setState({ [event.target.name]: event.target.value })
     }
     componentDidMount() {
@@ -31,12 +30,12 @@ class ClassTest extends React.Component {
         fetch(RACEAPI)
             .then(resp => resp.json())
             .then((races) => this.setState({ races: races }, function () { console.log(this.state.races[0]) }))
-    }
+    } //closed component mount
     handleSkills = (event) => {
         let skillArr = this.state.charSkills
         skillArr.push(event.target.value)
         this.setState({ charSkills: skillArr })
-    }
+    } // closed skills
     handleProficiencies = (cla, event) => {
         console.log(cla)
         let profArr = this.state.charProficiencies
@@ -45,7 +44,7 @@ class ClassTest extends React.Component {
             this.setState({ charProficiencies: profArr })
         }
         else alert(`You can only select ${cla.num_of_proficiency_choices} Proficiencies!`)
-    }
+    }//closed proficiencies
     barbarianSkills = () => {
         let filteredSkills = []
         this.state.skills.map(skill => skill.name === "Animal Handling" ? filteredSkills.push(skill) : skill.name === "Athletics" ? filteredSkills.push(skill) : skill.name === "Intimidation" ? filteredSkills.push(skill) :
