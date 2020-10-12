@@ -725,6 +725,39 @@ class CharacterCreateForm extends React.Component {
                         </Select>
                         </FormControl>
                     </> : null}
+                    {this.state.class === "Cleric" ? 
+                    <> 
+                    <FormControl>
+                    <InputLabel>Select {this.state.currentClassObj.num_of_proficiency_choices} Skills</InputLabel>
+                        <Select labelId="cleric-skills" id="cleric-skills-checkbox" multiple value={this.state.charSkills} onChange={this.handleChange} input={<Input />}
+                            renderValue={(selected) => selected.join(', ')} MenuProps={MenuProps} onClick={this.handleClass} disabled={!skillEnabled} name={"charSkills"}>
+                            <MenuItem key={"Guidance"} value={"Guidance"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Guidance") > -1} />
+                                <ListItemText primary={"Guidance"} />
+                            </MenuItem>
+                            <MenuItem key={"Light"} value={"Light"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Light") > -1} />
+                                <ListItemText primary={"Light"} />
+                            </MenuItem>
+                            <MenuItem key={"Mending"} value={"Mending"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Mending") > -1} />
+                                <ListItemText primary={"Mending"} />
+                            </MenuItem>
+                            <MenuItem key={"Resistance"} value={"Resistance"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Resistance") > -1} />
+                                <ListItemText primary={"Resistance"} />
+                            </MenuItem>
+                            <MenuItem key={"Sacred Flame"} value={"Sacred Flame"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Sacred-Flame") > -1} />
+                                <ListItemText primary={"Sacred-Flame"} />
+                            </MenuItem>
+                            <MenuItem key={"Spare The Dying"} value={"Spare The Dying"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Spare-The-Dying") > -1} />
+                                <ListItemText primary={"Spare-The-Dying"} />
+                            </MenuItem>
+                        </Select>
+                        </FormControl>
+                    </> : null}
                     <h3>Character Backstory</h3>
                     <TextField onClick={this.handleSkillState} id="character-backstory" name="charBio" label="Please write a descriptive backstory." multiline rowsMax={5} value={this.state.charBio} onChange={this.handleChange} variant="outlined" />
                     <br></br>
