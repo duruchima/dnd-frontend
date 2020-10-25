@@ -886,6 +886,71 @@ class CharacterCreateForm extends React.Component {
                         </Select>
                         </FormControl>
                     </> : null}
+                    {this.state.class === "Sorcerer" ? 
+                    <> 
+                    <FormControl>
+                    <InputLabel>Select {this.state.currentClassObj.num_of_proficiency_choices} Skills</InputLabel>
+                        <Select labelId="sorcerer-skills" id="sorcerer-skills-checkbox" multiple value={this.state.charSkills} onChange={this.handleChange} input={<Input />}
+                            renderValue={(selected) => selected.join(', ')} MenuProps={MenuProps} onClick={this.handleClass} disabled={!skillEnabled} name={"charSkills"}>
+                            <MenuItem key={"Acid Splash"} value={"Acid Splash"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Acid Splash") > -1} />
+                                <ListItemText primary={"Acid Splash"} />
+                            </MenuItem>
+                            <MenuItem key={"Chill Touch"} value={"Chill Touch"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Chill Touch") > -1} />
+                                <ListItemText primary={"Chill Touch"} />
+                            </MenuItem>
+                            <MenuItem key={"Dancing Lights"} value={"Dancing Lights"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Dancing Lights") > -1} />
+                                <ListItemText primary={"Dancing Lights"} />
+                            </MenuItem>
+                            <MenuItem key={"Fire Bolt"} value={"Fire Bolt"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Fire Bolt") > -1} />
+                                <ListItemText primary={"Fire Bolt"} />
+                            </MenuItem>
+                            <MenuItem key={"Light"} value={"Light"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Light") > -1} />
+                                <ListItemText primary={"Light"} />
+                            </MenuItem>
+                            <MenuItem key={"Mage Hand"} value={"Mage Hand"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Mage Hand") > -1} />
+                                <ListItemText primary={"Mage Hand"} />
+                            </MenuItem>
+                        </Select>
+                        </FormControl>
+                    </> : null}
+                    <> 
+                    <FormControl>
+                    <InputLabel>Select {this.state.currentClassObj.num_of_proficiency_choices} Skills</InputLabel>
+                        <Select labelId="warlock-skills" id="warlock-skills-checkbox" multiple value={this.state.charSkills} onChange={this.handleChange} input={<Input />}
+                            renderValue={(selected) => selected.join(', ')} MenuProps={MenuProps} onClick={this.handleClass} disabled={!skillEnabled} name={"charSkills"}>
+                            <MenuItem key={"Chill Touch"} value={"Chill Touch"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Chill Touch") > -1} />
+                                <ListItemText primary={"Chill Touch"} />
+                            </MenuItem>
+                            <MenuItem key={"Eldritch Blast"} value={"Eldritch Blast"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Eldritch Blast") > -1} />
+                                <ListItemText primary={"Eldritch Blast"} />
+                            </MenuItem>
+                            <MenuItem key={"Mage Hand"} value={"Mage Hand"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Mage Hand") > -1} />
+                                <ListItemText primary={"Mage Hand"} />
+                            </MenuItem>
+                            <MenuItem key={"Minor Illusion"} value={"Minor Illusion"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Minor Illusion") > -1} />
+                                <ListItemText primary={"Minor Illusion"} />
+                            </MenuItem>
+                            <MenuItem key={"Poison Spray"} value={"Poison Spray"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Poison Spray") > -1} />
+                                <ListItemText primary={"Poison Spray"} />
+                            </MenuItem>
+                            <MenuItem key={"Prestidigitation"} value={"Prestidigitation"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Prestidigitation") > -1} />
+                                <ListItemText primary={"Prestidigitation"} />
+                            </MenuItem>
+                        </Select>
+                        </FormControl>
+                    </> : null}
                     <h3>Character Backstory</h3>
                     <TextField onClick={this.handleSkillState} id="character-backstory" name="charBio" label="Please write a descriptive backstory." multiline rowsMax={5} value={this.state.charBio} onChange={this.handleChange} variant="outlined" />
                     <br></br>
