@@ -32,7 +32,8 @@ class CharacterCreateForm extends React.Component {
         currentCharObj: [],
         currentClassObj: [],
         currentSkillObjs: [],
-        charImg: ""
+        charImg: "",
+        charSpells: []
     }
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
@@ -692,12 +693,12 @@ class CharacterCreateForm extends React.Component {
                     </> : null}
                     <br></br>
                     <h3>Select {this.state.currentClassObj.num_of_proficiency_choices} Spells:</h3>
-                    {this.state.class === "Barbarian" ? 
+                    {this.state.class === "Bard" ? 
                     <> 
                     <FormControl>
                     <InputLabel>Select {this.state.currentClassObj.num_of_proficiency_choices} Spells</InputLabel>
                         <Select labelId="bard-spellls" id="bard-spells-checkbox" multiple value={this.state.charSkills} onChange={this.handleChange} input={<Input />}
-                            renderValue={(selected) => selected.join(', ')} MenuProps={MenuProps} onClick={this.handleClass} disabled={!skillEnabled} name={"charSkills"}>
+                            renderValue={(selected) => selected.join(', ')} MenuProps={MenuProps} onClick={this.handleClass} disabled={!skillEnabled} name={"charSpells"}>
                             <MenuItem key={"Dancing Lights"} value={"Dancing Lights"}>
                                 <Checkbox checked={this.state.charSkills.indexOf("Dancing Lights") > -1} />
                                 <ListItemText primary={"Dancing Lights"} />
@@ -718,9 +719,37 @@ class CharacterCreateForm extends React.Component {
                                 <Checkbox checked={this.state.charSkills.indexOf("Message") > -1} />
                                 <ListItemText primary={"Message"} />
                             </MenuItem>
-                            <MenuItem key={"Minor-Illusion"} value={"Minor-Illusion"}>
-                                <Checkbox checked={this.state.charSkills.indexOf("Minor-Illusion") > -1} />
-                                <ListItemText primary={"Minor-Illusion"} />
+                            <MenuItem key={"Minor Illusion"} value={"Minor Illusion"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Minor Illusion") > -1} />
+                                <ListItemText primary={"Minor Illusion"} />
+                            </MenuItem>
+                            <MenuItem key={"Prestidigitation"} value={"Prestidigitation"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Prestidigitation") > -1} />
+                                <ListItemText primary={"Prestidigitation"} />
+                            </MenuItem>
+                            <MenuItem key={"True Strike"} value={"True Strike"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("True Strike") > -1} />
+                                <ListItemText primary={"True Strike"} />
+                            </MenuItem>
+                            <MenuItem key={"Vicious Mockery"} value={"Vicious Mockery"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Vicious Mockery") > -1} />
+                                <ListItemText primary={"Vicious Mockery"} />
+                            </MenuItem>
+                            <MenuItem key={"Animal Friendship"} value={"Animal Friendship"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Animal Friendship") > -1} />
+                                <ListItemText primary={"Animal Friendship"} />
+                            </MenuItem>
+                            <MenuItem key={"Bane"} value={"Bane"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Bane") > -1} />
+                                <ListItemText primary={"Bane"} />
+                            </MenuItem>
+                            <MenuItem key={"Charm Person"} value={"Charm Person"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Charm Person") > -1} />
+                                <ListItemText primary={"Charm Person"} />
+                            </MenuItem>
+                            <MenuItem key={"Comprehend Languages"} value={"Comprehend Languages"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Comprehend Languages") > -1} />
+                                <ListItemText primary={"Comprehend Languages"} />
                             </MenuItem>
                         </Select>
                         </FormControl>
