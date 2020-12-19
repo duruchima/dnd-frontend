@@ -853,6 +853,18 @@ class CharacterCreateForm extends React.Component {
                                 <Checkbox checked={this.state.charSkills.indexOf("Create or Destroy Water") > -1} />
                                 <ListItemText primary={"Create or Destroy Water"} />
                             </MenuItem>
+                            <MenuItem key={"Cure Wounds"} value={"Cure Wounds"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Cure Wounds") > -1} />
+                                <ListItemText primary={"Cure Wounds"} />
+                            </MenuItem>
+                            <MenuItem key={"Detect Magic"} value={"Detect Magic"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Detect Magic") > -1} />
+                                <ListItemText primary={"Detect Magic"} />
+                            </MenuItem>
+                            <MenuItem key={"Detect Poison and Disease"} value={"Detect Poison and Disease"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Detect Poison and Disease") > -1} />
+                                <ListItemText primary={"Detect Poison and Disease"} />
+                            </MenuItem>
                         </Select>
                         </FormControl>
                     </> : null}
