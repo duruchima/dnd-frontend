@@ -853,6 +853,18 @@ class CharacterCreateForm extends React.Component {
                                 <Checkbox checked={this.state.charSkills.indexOf("Create or Destroy Water") > -1} />
                                 <ListItemText primary={"Create or Destroy Water"} />
                             </MenuItem>
+                            <MenuItem key={"Cure Wounds"} value={"Cure Wounds"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Cure Wounds") > -1} />
+                                <ListItemText primary={"Cure Wounds"} />
+                            </MenuItem>
+                            <MenuItem key={"Detect Magic"} value={"Detect Magic"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Detect Magic") > -1} />
+                                <ListItemText primary={"Detect Magic"} />
+                            </MenuItem>
+                            <MenuItem key={"Detect Poison and Disease"} value={"Detect Poison and Disease"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Detect Poison and Disease") > -1} />
+                                <ListItemText primary={"Detect Poison and Disease"} />
+                            </MenuItem>
                         </Select>
                         </FormControl>
                     </> : null}
@@ -897,6 +909,18 @@ class CharacterCreateForm extends React.Component {
                             <MenuItem key={"Purify Food and Drink"} value={"Purify Food and Drink"}>
                                 <Checkbox checked={this.state.charSkills.indexOf("Purify Food and Drink") > -1} />
                                 <ListItemText primary={"Purify Food and Drink"} />
+                            </MenuItem>
+                            <MenuItem key={"Shield of Faith"} value={"Shield of Faith"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Shield of Faith") > -1} />
+                                <ListItemText primary={"Shield of Faith"} />
+                            </MenuItem>
+                            <MenuItem key={"Aid"} value={"Aid"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Aid") > -1} />
+                                <ListItemText primary={"Aid"} />
+                            </MenuItem>
+                            <MenuItem key={"Branding Smite"} value={"Branding Smite"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Branding Smite") > -1} />
+                                <ListItemText primary={"Branding Smite"} />
                             </MenuItem>
                         </Select>
                         </FormControl>
