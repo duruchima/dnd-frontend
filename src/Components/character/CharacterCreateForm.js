@@ -1168,6 +1168,14 @@ class CharacterCreateForm extends React.Component {
                                 <Checkbox checked={this.state.charSkills.indexOf("Fog Cloud") > -1} />
                                 <ListItemText primary={"Fog Cloud"} />
                             </MenuItem>
+                            <MenuItem key={"Jump"} value={"Jump"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Jump") > -1} />
+                                <ListItemText primary={"Jump"} />
+                            </MenuItem>
+                            <MenuItem key={"Mage Armor"} value={"Mage Armor"}>
+                                <Checkbox checked={this.state.charSkills.indexOf("Mage Armor") > -1} />
+                                <ListItemText primary={"Mage Armor"} />
+                            </MenuItem>
                         </Select>
                         </FormControl>
                     </> : null}
